@@ -134,6 +134,14 @@ type SelfTradePreventionMode string
 
 type MarginAccountBorrowRepayType string
 
+type CancelReplaceMode string
+
+type CancelRestrictionsType string
+
+type OrderRateLimitExceededMode string
+
+type CancelAndReplaceOrderResultType string
+
 // UseTestnet switch all the API endpoints from production to the testnet
 var UseTestnet = false
 
@@ -332,6 +340,20 @@ const (
 	MarginAccountBorrowRepayStatusPending   string = "PENDING"
 	MarginAccountBorrowRepayStatusConfirmed string = "CONFIRMED"
 	MarginAccountBorrowRepayStatusFailed    string = "FAILED"
+
+	CancelReplaceStopOnFailure CancelReplaceMode = "STOP_ON_FAILURE"
+	CancelReplaceAllowFailure  CancelReplaceMode = "ALLOW_FAILURE"
+
+	CancelRestrictionOnlyNew             CancelRestrictionsType = "ONLY_NEW"
+	CancelRestrictionOnlyPartiallyFilled CancelRestrictionsType = "ONLY_PARTIALLY_FILLED"
+	CancelRestrictionPartiallyFilled     CancelRestrictionsType = "PARTIALLY_FILLED"
+
+	OrderRateLimitExceedDoNothing  OrderRateLimitExceededMode = "DO_NOTHING"
+	OrderRateLimitExceedCancelOnly OrderRateLimitExceededMode = "CANCEL_ONLY"
+
+	CancelAndReplaceOrderResultSuccess      CancelAndReplaceOrderResultType = "SUCCESS"
+	CancelAndReplaceOrderResultFailure      CancelAndReplaceOrderResultType = "FAILURE"
+	CancelAndReplaceOrderResultNotAttempted CancelAndReplaceOrderResultType = "NOT_ATTEMPTED"
 )
 
 func currentTimestamp() int64 {

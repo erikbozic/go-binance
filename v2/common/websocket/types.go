@@ -40,6 +40,9 @@ const (
 	// OrderPlaceSpotWsApiMethod define method for creation order via websocket API
 	OrderPlaceSpotWsApiMethod WsApiMethodType = "order.place"
 
+	// OrderCancelAndReplaceWsApiMethod define method for cancelling and replacing and order via websocket API
+	OrderCancelAndReplaceWsApiMethod WsApiMethodType = "order.cancelReplace"
+
 	// OrderListPlaceOcoSpotWsApiMethod define method for creation OCO order list via websocket API
 	OrderListPlaceOcoSpotWsApiMethod WsApiMethodType = "orderList.place.oco"
 
