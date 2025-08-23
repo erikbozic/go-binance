@@ -41,7 +41,7 @@ func NewOrderCancelAndReplaceWsService(apiKey, secretKey string) (*OrderCancelAn
 type OrderCancelAndReplaceWsRequest struct {
 	symbol                     string
 	cancelReplaceMode          CancelReplaceMode
-	cancelOrderId              *string
+	cancelOrderId              *int64
 	cancelOrigClientOrderId    *string
 	cancelNewClientOrderId     *string
 	side                       SideType
@@ -226,7 +226,7 @@ func (s *OrderCancelAndReplaceWsRequest) CancelReplaceMode(cancelReplaceMode Can
 }
 
 // CancelOrderId set cancelOrderId
-func (s *OrderCancelAndReplaceWsRequest) CancelOrderId(cancelOrderId string) *OrderCancelAndReplaceWsRequest {
+func (s *OrderCancelAndReplaceWsRequest) CancelOrderId(cancelOrderId int64) *OrderCancelAndReplaceWsRequest {
 	s.cancelOrderId = &cancelOrderId
 	return s
 }
