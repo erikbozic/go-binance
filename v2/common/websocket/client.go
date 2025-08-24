@@ -122,6 +122,9 @@ func (c *client) WriteSync(id string, data []byte, timeout time.Duration) ([]byt
 	c.connMu.Lock()
 	defer c.connMu.Unlock()
 
+	c.logger.Printf("connection addr: %p", &c.conn)
+	c.logger.Printf("connection addr (no pointer): %p", c.conn)
+
 	if err := c.conn.WriteMessage(websocket.TextMessage, data); err != nil {
 		c.debug("write sync: unable to write message into websocket conn '%v'", err)
 		return nil, err
@@ -380,6 +383,10 @@ type Connection interface {
 func (c *connection) WriteMessage(messageType int, data []byte) error {
 	c.connectionMu.Lock()
 	defer c.connectionMu.Unlock()
+	fmt.Printf("WriteMessage c.conn: %p\n", c.conn)
+	fmt.Printf("WriteMessage c.conn (pointer): %p\n", &c.conn)
+	fmt.Printf("WriteMessage c.conn.NetConn().LocalAddr(): %s", c.conn.NetConn().LocalAddr())
+
 	return c.conn.WriteMessage(messageType, data)
 }
 
